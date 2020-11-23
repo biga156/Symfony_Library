@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CDRomController extends AbstractController
 {
     /**
-     * @Route("/", name="c_d_rom_index", methods={"GET"})
+     * @Route("/", name="CD_index", methods={"GET"})
      */
     public function index(CDRomRepository $cDRomRepository): Response
     {
