@@ -44,6 +44,11 @@ class Ressource
      */
     private $loans;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $searchable;
+
     public function __construct()
     {
         $this->loans = new ArrayCollection();
@@ -125,6 +130,18 @@ class Ressource
         if ($this->loans->removeElement($loan)) {
             $loan->removeRessource($this);
         }
+
+        return $this;
+    }
+
+    public function getSearchable(): ?bool
+    {
+        return $this->searchable;
+    }
+
+    public function setSearchable(bool $searchable): self
+    {
+        $this->searchable = $searchable;
 
         return $this;
     }
