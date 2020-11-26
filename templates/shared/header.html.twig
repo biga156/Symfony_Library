@@ -12,7 +12,7 @@
 				</a>
 			</li>
 			{% if app.user %}
-				{% if app.user.roles == ['ROLE_ADMIN'] %}
+				{% if app.user.roles == ["ROLE_ADMIN"] %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
 					</li>

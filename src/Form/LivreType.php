@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
-
 class LivreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -18,12 +17,12 @@ class LivreType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('cote', TextType::class)
-            //->add('availability',CheckboxType::class)
-            ->add('picture',TextType::class)
-            ->add('authtor',TextType::class)
-            ->add('special',TextType::class)
+            ->add('availability', CheckboxType::class)
+            ->add('picture', TextType::class)
+            ->add('authtor', TextType::class)
+            ->add('special', TextType::class)
             //->add('loans',EntityType::class, [
-              //   ])
+            //   ])
         ;
     }
 

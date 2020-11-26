@@ -7,10 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=RessourceRepository::class)
- */
-class Ressource
+
+abstract class Ressource
 {
     /**
      * @ORM\Id
@@ -22,39 +20,33 @@ class Ressource
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $title;
+    public $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $cote;
+    public $cote;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $availability;
+    public $availability;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $picture;
+    public $picture;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Loan::class, mappedBy="ressources")
-     */
-    private $loans;
+
 
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $searchable;
+    public $searchable;
 
-    public function __construct()
-    {
-        $this->loans = new ArrayCollection();
-    }
+   
 
-    public function getId(): ?int
+    private function getId(): ?int
     {
         return $this->id;
     }
@@ -107,32 +99,7 @@ class Ressource
         return $this;
     }
 
-    /**
-     * @return Collection|Loan[]
-     */
-    public function getLoans(): Collection
-    {
-        return $this->loans;
-    }
-
-    public function addLoan(Loan $loan): self
-    {
-        if (!$this->loans->contains($loan)) {
-            $this->loans[] = $loan;
-            $loan->addRessource($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLoan(Loan $loan): self
-    {
-        if ($this->loans->removeElement($loan)) {
-            $loan->removeRessource($this);
-        }
-
-        return $this;
-    }
+   
 
     public function getSearchable(): ?bool
     {
